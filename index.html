@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head >
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moein Mzuri - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="google-site-verification" content="AbCDeFg12345" />
     <style>
         * {
             margin: 0;
@@ -135,9 +136,7 @@
         .hero-content {
             position: relative;
             z-index: 1;
-        }
-
-        .hero h1 {
+        }  .hero h1 {
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 800;
             margin-bottom: 1rem;
@@ -285,9 +284,7 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--light);
-        }
-
-        .skill-card p {
+        }      .skill-card p {
             color: #94a3b8;
             font-size: 0.95rem;
         }
@@ -432,6 +429,23 @@
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
         }
 
+        .form-group input.valid {
+            border-color: #10b981;
+        }
+
+        .form-group input.invalid {
+            border-color: #ef4444;
+        }       /* Remove red underline/spell check styling */
+        .form-group input,
+        .form-group textarea {
+            -webkit-text-fill-color: var(--light);
+        }
+
+        .form-group input::-webkit-input-placeholder,
+        .form-group textarea::-webkit-input-placeholder {
+            color: #64748b;
+        }
+
         .form-group textarea {
             resize: vertical;
             min-height: 150px;
@@ -533,14 +547,6 @@
             transform: translateY(0);
         }
     </style>
-
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="AbCDeFg12345" />
-    <title>Moein Mzuri - Portfolio</title>
-    
-
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -569,16 +575,14 @@
                 </a>
             </div>
         </div>
-    </section>
-
-    <!-- About Section -->
+    </section><!-- About Section -->
     <section id="about">
         <h2 class="reveal">About Me</h2>
         <p class="section-subtitle reveal"></p>
         <div class="about-content">
             <div class="about-text reveal">
-                <p>Hello! I’m Moein , a passionate web developer who enjoys creating clean and modern websites. I focus on building projects that are easy to use, creative, and work smoothly on all devices. I enjoy learning new technologies and always try to improve my skills to stay up to date in the tech world.</p>
-                <p>I’m hardworking, responsible, and love turning ideas into real digital projects. My goal is to grow as a developer and make a positive impact through smart design and good user experience.</p>
+                <p>Hello! I'm Moein , a passionate web developer who enjoys creating clean and modern websites. I focus on building projects that are easy to use, creative, and work smoothly on all devices. I enjoy learning new technologies and always try to improve my skills to stay up to date in the tech world.</p>
+                <p>I'm hardworking, responsible, and love turning ideas into real digital projects. My goal is to grow as a developer and make a positive impact through smart design and good user experience.</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-card reveal">
@@ -625,7 +629,7 @@
                     </div>
                 </div>
             </div>
-             <div class="project-card reveal">
+            <div class="project-card reveal">
                 <div class="project-img">
                     <i class="fas fa-users"></i>
                 </div>
@@ -640,12 +644,10 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
+    </section><!-- Contact Section -->
     <section id="contact">
         <h2 class="reveal">Get in Touch</h2>
-        <p class="section-subtitle reveal">Questions, ideas, or feedback? I’d love to hear from you!</p>
+        <p class="section-subtitle reveal">Questions, ideas, or feedback? I'd love to hear from you!</p>
         <div class="contact-content">
             <form id="contactForm" class="contact-form reveal">
                 <div class="form-group">
@@ -654,11 +656,11 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <input type="email" id="email" placeholder="Enter your email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" autocomplete="email" spellcheck="false">
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message</label>
-                    <textarea id="message" placeholder="Type your message..." required></textarea>
+                    <textarea id="message" placeholder="Type your message..." required spellcheck="false"></textarea>
                 </div>
                 <button type="submit" class="submit-btn">
                     Send Message <i class="fas fa-paper-plane"></i>
@@ -702,17 +704,119 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 100);
-        });
+        });// Email validation function
+        function isValidEmail(email) {
+            // Basic email format check
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            // List of common disposable/fake email domains
+            const fakeDomains = [
+                'tempmail.com', 'guerrillamail.com', '10minutemail.com', 'throwaway.email',
+                'mailinator.com', 'trashmail.com', 'yopmail.com', 'fakeinbox.com',
+                'maildrop.cc', 'temp-mail.org', 'getnada.com', 'dispostable.com',
+                'temp-mail.io', 'emailondeck.com', 'sharklasers.com', 'guerrillamailblock.com',
+                'mintemail.com', 'mytrashmail.com', 'tempinbox.com', 'throwawaymail.com',
+                'spamgourmet.com', 'mailnesia.com', 'fakemailgenerator.com', 'anonymousemail.me'
+            ];
+            
+            // List of trusted email providers (Google, Yahoo, Outlook, etc.)
+            const trustedDomains = [
+                'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.uk', 'yahoo.co.in',
+                'outlook.com', 'hotmail.com', 'live.com', 'msn.com', 'icloud.com',
+                'me.com', 'mac.com', 'aol.com', 'protonmail.com', 'proton.me',
+                'zoho.com', 'mail.com', 'gmx.com', 'yandex.com'
+            ];
+            
+            // Check basic format
+            if (!emailRegex.test(email)) {
+                return { valid: false, message: 'Please enter a valid email format' };
+            }
+            
+            // Extract domain
+            const domain = email.split('@')[1].toLowerCase();
+            
+            // Check against fake domains
+            if (fakeDomains.includes(domain)) {
+                return { valid: false, message: 'Temporary or disposable emails are not allowed. Please use a Google, Yahoo, or Outlook email.' };
+            }
+            
+            // Check for common typos in popular domains
+            const domainParts = domain.split('.');
+            if (domainParts.length < 2) {
+                return { valid: false, message: 'Please enter a valid email domain' };
+            }
+            
+            // Check if domain extension is valid (at least 2 characters)
+            const extension = domainParts[domainParts.length - 1];
+            if (extension.length < 2) {
+                return { valid: false, message: 'Please enter a valid email extension' };
+            }
+            
+            // Recommend trusted providers
+            if (!trustedDomains.includes(domain)) {
+                return { 
+                    valid: 'warning', 
+                    message: 'For better deliverability, we recommend using Google (Gmail), Yahoo, or Outlook email addresses.' 
+                };
+            }
+            
+            return { valid: true, message: '' };
+        }
 
-        // Form submission
+        // Real-time email validation
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('input', function() {
+            const email = this.value.trim();
+            if (email.length > 0) {
+                const validation = isValidEmail(email);
+                if (validation.valid === true) {
+                    this.classList.remove('invalid');
+                    this.classList.add('valid');
+                } else if (validation.valid === false) {
+                    this.classList.remove('valid');
+                    this.classList.add('invalid');
+                } else {
+                    this.classList.remove('invalid', 'valid');
+                }
+            } else {
+                this.classList.remove('valid', 'invalid');
+            }
+        });// Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const text = `📩 New message from portfolio:%0A%0A👤 Name: ${name}%0A📧 Email: ${email}%0A💬 Message: ${message}`;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validate name
+            if (name.length < 2) {
+                alert('⚠️ Please enter a valid name (at least 2 characters)');
+                return;
+            }
+            
+            // Validate email
+            const emailCheck = isValidEmail(email);
+            if (emailCheck.valid === false) {
+                alert('⚠️ ' + emailCheck.message);
+                return;
+            }
+            
+            // Show warning for non-trusted domains but allow submission
+            if (emailCheck.valid === 'warning') {
+                if (!confirm(emailCheck.message + '\n\nDo you want to continue with this email?')) {
+                    return;
+                }
+            }
+            
+            // Validate message
+            if (message.length < 10) {
+                alert('⚠️ Please enter a message with at least 10 characters');
+                return;
+            }
+            
+            const text = 📩 New message from portfolio:%0A%0A👤 Name: ${name}%0A📧 Email: ${email}%0A💬 Message: ${message};
 
-            fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`)
+            fetch(https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text})
                 .then(() => {
                     alert('✅ Message sent successfully!');
                     this.reset();
@@ -733,6 +837,4 @@
         reveals.forEach(el => revealObserver.observe(el));
     </script>
 </body>
-
 </html>
-
